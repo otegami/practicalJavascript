@@ -8,8 +8,26 @@
       var myPrimitive = 10;
       var myObject = {name: 'gordon'};
       var myHouse = {color: 'blue'};
-      myHouse.color = 'red';
       console.log(myHouse.color);
+
+      var color = myHouse.color;
+      color = 'red';
+      console.log('--- example3 ---');
+      console.log(color);
+
+      var myHouse1 = { color: 'blue'};
+      var myHouse2 = myHouse1;
+      myHouse2.color = 'red';
+      console.log('--- example4 ---');
+      console.log(myHouse1.color);
+      console.log(myHouse2.color);
+
+      console.log('--- example5 ---');
+      var myHouse1 = { color: 'blue'};
+      var myHouse2 = { color: 'blue'};
+      myHouse2.color = 'red';
+      console.log(myHouse1.color);
+      console.log(myHouse2.color);
 
       var todoList = {
         todos: [],
