@@ -4,7 +4,7 @@ var todoList = {
     if(this.todos.length === 0) {
       console.log('Your todo list is empty!')
     } else {
-      console.log('My Todos');
+      console.log('My Todos:');
       for(var i = 0; i < this.todos.length; i++) {
         if(this.todos[i].completed === true) {
           console.log('(x)', this.todos[i].todoText);
@@ -30,6 +30,7 @@ var todoList = {
     this.displayTodos();
   },
   toggleCompleted: function(position) {
+    debugger;
     var todo = this.todos[position];
     todo.completed = !todo.completed;
     this.displayTodos();
@@ -56,16 +57,37 @@ var todoList = {
   },
 };
 
-// 1. We want to get access to the display todos button
-var displayTodosButton = document.getElementById('displayTodosButton');
-var toggleAllButton = document.getElementById('toggleAllButton');
+var handlers = {
+  displayTodos: function() {
+    todoList.displayTodos();
+  },
+  addTodo: function() {
+    var addTodoTextInput = document.getElementById('addTodoTextInput');
+    
+    todoList.addTodo(addTodoTextInput.value);
+    addTodoTextInput.value = '';
+  },
+  changeTodo: function() {
+    var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+    var changeTodoTextInput = document.getElementById('changeTodoTextInput');
 
-// 2. We want to run display method, when someone clicks the display
-// todos button.
-displayTodosButton.addEventListener('click', function() {
-  todoList.displayTodos();
-});
+    todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+    changeTodoPositionInput.value = '';
+    changeTodoTextInput.value = '';
+  },
+  deleteTodo: function() {
+    var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
 
-toggleAllButton.addEventListener('click', function() {
-  todoList.toggleAll();
-});
+    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+    deleteTodoPositionInput.value = '';
+  },
+  toggleCompleted: function() {
+    var toggelCompletedPositionInput = document.getElementById('toggelCompletedPositionInput');
+
+    todoList.toggleCompleted(toggelCompletedPositionInput.valueAsNumber);
+    toggelCompletedPositionInput.value = '';
+  },
+  toggleAll: function() {
+    todoList.toggleAll();
+  },
+};
