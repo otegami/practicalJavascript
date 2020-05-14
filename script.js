@@ -77,6 +77,7 @@ var handlers = {
   },
 };
 
+// I will add delete button function about it
 var view = {
   displayTodos: function() {
   var todosUl = document.querySelector('ul');
